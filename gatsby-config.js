@@ -63,6 +63,7 @@ module.exports.plugins.push({
     background_color: `#FF453C`,
     theme_color: `#070707`,
     display: "standalone",
+    icon: `src/main.jpg`,
     legacy: true,
   },
 });
