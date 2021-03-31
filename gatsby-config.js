@@ -48,21 +48,5 @@ module.exports = {
       resolve: "gatsby-source-contentful",
       options: contentfulConfig,
     },
-    `gatsby-plugin-offline`,
   ],
 };
-
-const siteMetadata = module.exports.siteMetadata;
-
-module.exports.plugins.push({
-  resolve: `gatsby-plugin-manifest`,
-  options: {
-    name: siteMetadata.title,
-    short_name: `PWA Survival`,
-    start_url: `/`,
-    background_color: `#FF453C`,
-    theme_color: `#070707`,
-    display: "standalone",
-    legacy: true,
-  },
-});
