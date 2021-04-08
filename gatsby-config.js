@@ -40,7 +40,6 @@ module.exports = {
   },
   pathPrefix: "/gatsby-contentful-starter",
   plugins: [
-    "gatsby-transformer-remark",
     "gatsby-transformer-sharp",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sharp",
@@ -49,6 +48,46 @@ module.exports = {
       options: contentfulConfig,
     },
     `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              offsetY: `200`,
+              className: `custom-class`,
+              maintainCase: false,
+              removeAccents: true,
+              elements: [`h2`, `h3`, `h4`, `h5`],
+            },
+          },
+        ],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        gatsbyRemarkPlugins: [
+          {
+            resolve: "gatsby-remark-prismjs",
+            options: {
+              classPrefix: "language-",
+            },
+          },
+          {
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              offsetY: `200`,
+              className: `custom-class`,
+              maintainCase: false,
+              removeAccents: true,
+              elements: [`h2`, `h3`, `h4`, `h5`],
+            },
+          },
+        ],
+      },
+    },
   ],
 };
 

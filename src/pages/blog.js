@@ -51,8 +51,8 @@ export const pageQuery = graphql`
             }
           }
           description {
-            childMarkdownRemark {
-              html
+            childMdx {
+              body
             }
           }
         }
