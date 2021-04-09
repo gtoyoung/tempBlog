@@ -5,6 +5,7 @@ import get from "lodash/get";
 import Img from "gatsby-image";
 import Layout from "../components/layout";
 import { MDXRenderer } from "gatsby-plugin-mdx";
+import TableOfContents from "../components/table-of-contents";
 
 import heroStyles from "../components/hero.module.css";
 
@@ -33,6 +34,7 @@ class BlogPostTemplate extends React.Component {
             >
               {post.publishDate}
             </p>
+            <TableOfContents headings={post.body.childMdx.tableOfContents} />
             <MDXRenderer>{post.body.childMdx.body}</MDXRenderer>
           </div>
         </div>
