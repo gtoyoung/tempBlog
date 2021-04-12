@@ -25,17 +25,22 @@ class BlogPostTemplate extends React.Component {
               fluid={post.heroImage.fluid}
             />
           </div>
-          <div className="wrapper">
-            <h1 className="section-headline">{post.title}</h1>
-            <p
-              style={{
-                display: "block",
-              }}
-            >
-              {post.publishDate}
-            </p>
-            <TableOfContents headings={post.body.childMdx.tableOfContents} />
-            <MDXRenderer>{post.body.childMdx.body}</MDXRenderer>
+          <div style={{ display: "flex" }}>
+            <div className="wrapper" style={{ flexBasis: "66%" }}>
+              <h1 className="section-headline">{post.title}</h1>
+              <p
+                style={{
+                  display: "block",
+                }}
+              >
+                {post.publishDate}
+              </p>
+
+              <MDXRenderer>{post.body.childMdx.body}</MDXRenderer>
+            </div>
+            <div style={{ flexBasis: "25%" }}>
+              <TableOfContents items={post.body.childMdx.tableOfContents} />
+            </div>
           </div>
         </div>
       </Layout>
