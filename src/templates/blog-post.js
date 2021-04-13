@@ -16,8 +16,12 @@ class BlogPostTemplate extends React.Component {
 
     return (
       <Layout location={this.props.location}>
+        <div>
+          <TableOfContents items={post.body.childMdx.tableOfContents} />
+        </div>
         <div style={{ background: "#fff" }}>
           <Helmet title={`${post.title} | ${siteTitle}`} />
+
           <div className={heroStyles.hero}>
             <Img
               className={heroStyles.heroImage}
@@ -25,22 +29,17 @@ class BlogPostTemplate extends React.Component {
               fluid={post.heroImage.fluid}
             />
           </div>
-          <div style={{ display: "flex" }}>
-            <div className="wrapper" style={{ flexBasis: "66%" }}>
-              <h1 className="section-headline">{post.title}</h1>
-              <p
-                style={{
-                  display: "block",
-                }}
-              >
-                {post.publishDate}
-              </p>
+          <div className="wrapper">
+            <h1 className="section-headline">{post.title}</h1>
+            <p
+              style={{
+                display: "block",
+              }}
+            >
+              {post.publishDate}
+            </p>
 
-              <MDXRenderer>{post.body.childMdx.body}</MDXRenderer>
-            </div>
-            <div style={{ flexBasis: "25%" }}>
-              <TableOfContents items={post.body.childMdx.tableOfContents} />
-            </div>
+            <MDXRenderer>{post.body.childMdx.body}</MDXRenderer>
           </div>
         </div>
       </Layout>

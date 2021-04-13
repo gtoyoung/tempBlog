@@ -43,7 +43,7 @@ function BlogIndex({ data }) {
         {/* <Helmet title={siteTitle} /> */}
         {/* <CloudTag tags={tags} /> */}
         <div className={styles.hero}>Blog</div>
-        <div className="wrapper">
+        <div className="wrapper fJjfrB">
           <h2 className="section-headline">Recent articles</h2>
           <ul className="article-list">
             {posts
@@ -53,13 +53,13 @@ function BlogIndex({ data }) {
                       <ArticlePreview article={node} />
                       {node.tags.map((tag, index) => {
                         return (
-                          <Button
-                            variant="secondary"
-                            size="sm"
+                          <a
+                            href="javascript:(void);"
+                            className="cqnnTr"
                             onClick={handleInputChange}
                           >
                             {tag}
-                          </Button>
+                          </a>
                         );
                       })}
                     </li>

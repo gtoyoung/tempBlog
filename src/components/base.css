@@ -10,7 +10,7 @@ body {
   font-family: "Avenir", Tahoma, Arial, Helvetica, sans-serif;
   font-size: 1em;
   line-height: 1.65;
-  color: #373F49;
+  color: #373f49;
   background: #eee;
   margin: 0;
 }
@@ -67,6 +67,28 @@ a {
   list-style: none;
 }
 
-  .list-inline li {
-    display: inline-block;
-  }
+.list-inline li {
+  display: inline-block;
+}
+.fJjfrB {
+  margin-top: 0.875rem;
+  margin-bottom: -0.875rem;
+  min-height: 0.875rem;
+  display: block;
+}
+.cqnnTr {
+  margin-bottom: 0.875rem;
+  background: rgb(241, 243, 245);
+  padding-left: 1rem;
+  padding-right: 1rem;
+  height: 2rem;
+  border-radius: 1rem;
+  display: inline-flex;
+  -webkit-box-align: center;
+  align-items: center;
+  margin-right: 0.875rem;
+  color: rgb(12, 166, 120);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+}

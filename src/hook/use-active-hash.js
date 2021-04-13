@@ -21,12 +21,14 @@ export const useActiveHash = (itemIds, rootMargin = undefined) => {
     );
 
     itemIds.forEach((id) => {
+      console.log(id);
       // 컴포넌트가 변경될때만 실행됨 ! 즉 setActiveHash(entry.target.id) 로 인해 bold 처리가 실행될때
       observer.observe(document.getElementById(id));
     });
 
     return () => {
       itemIds.forEach((id) => {
+        console.log(id);
         // observer.observe(document.getElementById(id)) 실행되기전 실행됨 clean up 과정임
         observer.unobserve(document.getElementById(id));
       });
