@@ -6,6 +6,7 @@ import Img from "gatsby-image";
 import Layout from "../components/layout";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import TableOfContents from "../components/table-of-contents";
+import StickyBox from "react-sticky-box";
 
 import heroStyles from "../components/hero.module.css";
 
@@ -16,30 +17,34 @@ class BlogPostTemplate extends React.Component {
 
     return (
       <Layout location={this.props.location}>
-        <div>
-          <TableOfContents items={post.body.childMdx.tableOfContents} />
-        </div>
-        <div style={{ background: "#fff" }}>
-          <Helmet title={`${post.title} | ${siteTitle}`} />
+        <div className="row">
+          <StickyBox offsetTop={20} offsetBottom={20}>
+            <div className="tocWrapper">
+              <TableOfContents items={post.body.childMdx.tableOfContents} />
+            </div>
+          </StickyBox>
+          <div style={{ background: "#fff" }}>
+            <Helmet title={`${post.title} | ${siteTitle}`} />
 
-          <div className={heroStyles.hero}>
-            <Img
-              className={heroStyles.heroImage}
-              alt={post.title}
-              fluid={post.heroImage.fluid}
-            />
-          </div>
-          <div className="wrapper">
-            <h1 className="section-headline">{post.title}</h1>
-            <p
-              style={{
-                display: "block",
-              }}
-            >
-              {post.publishDate}
-            </p>
+            <div className={heroStyles.hero}>
+              <Img
+                className={heroStyles.heroImage}
+                alt={post.title}
+                fluid={post.heroImage.fluid}
+              />
+            </div>
+            <div className="wrapper">
+              <h1 className="section-headline">{post.title}</h1>
+              <p
+                style={{
+                  display: "block",
+                }}
+              >
+                {post.publishDate}
+              </p>
 
-            <MDXRenderer>{post.body.childMdx.body}</MDXRenderer>
+              <MDXRenderer>{post.body.childMdx.body}</MDXRenderer>
+            </div>
           </div>
         </div>
       </Layout>

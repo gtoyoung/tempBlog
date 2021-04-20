@@ -15,20 +15,18 @@ export const useActiveHash = (itemIds, rootMargin = undefined) => {
           }
         });
       },
-      { rootMargin: rootMargin || `0% 0% -80% 0%` }
+      { rootMargin: rootMargin || `0% 0% -17% 0%` }
       // root 는 내가 보는 viewport 임. bottom -80% 만큼 위로 올려서 Tag가 위쪽으로 와야 isIntersecting 됨
       // -80% 하지 않았다면 Tag 가 화면의 맨밑에있어도 isIntersecting 가 실행됨!
     );
 
     itemIds.forEach((id) => {
-      console.log(id);
       // 컴포넌트가 변경될때만 실행됨 ! 즉 setActiveHash(entry.target.id) 로 인해 bold 처리가 실행될때
       observer.observe(document.getElementById(id));
     });
 
     return () => {
       itemIds.forEach((id) => {
-        console.log(id);
         // observer.observe(document.getElementById(id)) 실행되기전 실행됨 clean up 과정임
         observer.unobserve(document.getElementById(id));
       });

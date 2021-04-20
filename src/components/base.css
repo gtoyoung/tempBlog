@@ -92,3 +92,10 @@ a {
   font-weight: 500;
   font-size: 1rem;
 }
+
+.tocWrapper {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  right: calc(-50vw - -550px);
+}
