@@ -70,6 +70,13 @@ module.exports = {
       options: {
         gatsbyRemarkPlugins: [
           {
+            resolve: `gatsby-remark-highlight-code`,
+            options: {
+              terminal: "ubuntu",
+              theme: "solarized-dark",
+            },
+          },
+          {
             resolve: "gatsby-remark-prismjs",
             options: {
               classPrefix: "language-",
