@@ -99,3 +99,9 @@ a {
   height: 100%;
   right: calc(-50vw - -550px);
 }
+
+@media screen and (max-width: 1900px) {
+  .tocWrapper {
+    display: none;
+  }
+}
