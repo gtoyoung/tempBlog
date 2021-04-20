@@ -19,14 +19,24 @@ const getHeadingIds = (toc, traverseFullDepth = true, recursionDepth = 1) => {
       }
     }
   }
+
   return idList;
 };
 
 function createItems(toc, activeHash, ulStyle) {
-  const tocs = toc[0];
+  var tempArr = [];
+  if (Array.isArray(toc[0])) {
+    for (var i = 0; i < toc[0].length; i++) {
+      tempArr.push(toc[0][i]);
+    }
+  } else {
+    for (var i = 0; i < toc.length; i++) {
+      tempArr.push(toc[i]);
+    }
+  }
   return (
-    tocs &&
-    tocs.map((item, index) => {
+    tempArr &&
+    tempArr.map((item, index) => {
       const isActive = item.url === `#${activeHash}`;
       return (
         <li key={item.url}>
@@ -36,11 +46,11 @@ function createItems(toc, activeHash, ulStyle) {
               style={isActive ? { fontWeight: "bold" } : {}}
               // isActive 인지 확인하여 'bold' 할지 말지 결정한다.
             >
-              😉{item.title}
+              {item.title}
             </Link>
           )}
           {/* //item.items 가 list 이니 마찬가지로 재귀적으로 풀어 ul을 render 한다. */}
-          {tocs.items && (
+          {item.items && (
             <ul style={ulStyle}>
               {createItems(item.items, activeHash, ulStyle)}
             </ul>
@@ -53,7 +63,7 @@ function createItems(toc, activeHash, ulStyle) {
 
 function TableOfContents({ items }) {
   const toc = Object.values(items);
-  const activeHash = useActiveHash(getHeadingIds(toc[0], true));
+  const activeHash = useActiveHash(getHeadingIds(toc[0], true, 2));
   const ulStyle = {
     listStyleType: "none",
     margin: "0 0 10 0",
