@@ -5,17 +5,17 @@ const useTheme = () => {
     .matches
     ? "dark"
     : "light";
-  const localTheme = localStorage.getItem("theme");
-  const initialTheme = localTheme || prefersColorScheme;
+  // const localTheme = localStorage.getItem("theme");
+  const initialTheme = "dark" || prefersColorScheme;
   const [theme, setTheme] = useState(initialTheme);
 
   const setMode = (mode) => {
-    localStorage.setItem("theme", mode);
-    if (mode === "dark" && typeof window !== "undefined") {
+    // localStorage.setItem("theme", mode);
+    if (mode === "dark") {
       document.body.classList.remove("light");
       document.body.classList.add("dark");
       document.getElementById("themeBtn").setAttribute("aria-pressed", "false");
-    } else if (mode === "light" && typeof window !== "undefined") {
+    } else if (mode === "light") {
       document.body.classList.remove("dark");
       document.body.classList.add("light");
       document.getElementById("themeBtn").setAttribute("aria-pressed", "true");
