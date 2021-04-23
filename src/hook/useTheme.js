@@ -11,11 +11,11 @@ const useTheme = () => {
 
   const setMode = (mode) => {
     localStorage.setItem("theme", mode);
-    if (mode === "dark") {
+    if (mode === "dark" && typeof window !== "undefined") {
       document.body.classList.remove("light");
       document.body.classList.add("dark");
       document.getElementById("themeBtn").setAttribute("aria-pressed", "false");
-    } else if (mode === "light") {
+    } else if (mode === "light" && typeof window !== "undefined") {
       document.body.classList.remove("dark");
       document.body.classList.add("light");
       document.getElementById("themeBtn").setAttribute("aria-pressed", "true");
