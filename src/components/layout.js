@@ -10,7 +10,7 @@ const Template = ({ children }) => {
   const [theme, themeToggler] = useTheme();
 
   useEffect(() => {
-    if (theme === "light") {
+    if (theme === "light" && typeof window !== "undefined") {
       document.getElementById("themeBtn").setAttribute("aria-pressed", "false");
     } else {
       document.getElementById("themeBtn").setAttribute("aria-pressed", "true");
