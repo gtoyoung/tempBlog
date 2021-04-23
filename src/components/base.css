@@ -6,7 +6,7 @@
   font-display: swap;
 }
 
-body {
+body.light {
   font-family: "Avenir", Tahoma, Arial, Helvetica, sans-serif;
   font-size: 1em;
   line-height: 1.65;
@@ -16,13 +16,12 @@ body {
 }
 
 body.dark {
-  -webkit-font-smoothing: antialiased;
-
-  --bg: darkslategray;
-  --textNormal: rgba(255, 255, 255, 0.88);
-  --textTitle: white;
-  --textLink: yellow;
-  --hr: hsla(0, 0%, 100%, 0.2);
+  font-family: "Avenir", Tahoma, Arial, Helvetica, sans-serif;
+  font-size: 1em;
+  line-height: 1.65;
+  color: #eee;
+  background: #373f49;
+  margin: 0;
 }
 
 img {
@@ -115,4 +114,44 @@ a {
   .tocWrapper {
     display: none;
   }
+}
+
+.btn_theme {
+  position: fixed;
+  right: 78px;
+  bottom: 19px;
+  display: inline-block;
+  width: 136px;
+  height: 53px;
+  background-position: -270px -110px;
+  background-repeat: no-repeat;
+  vertical-align: top;
+  cursor: pointer;
+  z-index: 100;
+  background-image: url(https://s.pstatic.net/static/www/img/uit/2021/sp_main_16ad06.png);
+  -webkit-background-size: 433px 409px;
+  background-size: 433px 409px;
+  background-repeat: no-repeat;
+}
+
+.btn_theme[aria-pressed="true"] {
+  display: inline-block;
+  width: 148px;
+  height: 53px;
+  background-position: -270px 0;
+  background-repeat: no-repeat;
+  vertical-align: top;
+}
+
+.btn_theme:hover[aria-pressed="false"] {
+  display: inline-block;
+  width: 136px;
+  height: 53px;
+  background-position: -270px -55px;
+  background-repeat: no-repeat;
+  vertical-align: top;
+}
+
+button {
+  background-color: transparent;
 }

@@ -1,35 +1,33 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./base.css";
 import Container from "./container";
 import Navigation from "./navigation";
 import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
-import { ThemeToggler } from "gatsby-plugin-dark-mode";
-class Template extends React.Component {
-  render() {
-    deckDeckGoHighlightElement();
-    const { children } = this.props;
+import useTheme from "../hook/useTheme";
 
-    return (
-      <Container>
-        <ThemeToggler>
-          {({ theme, toggleTheme }) => (
-            <label>
-              <input
-                type="checkbox"
-                onChange={(e) =>
-                  toggleTheme(e.target.checked ? "dark" : "light")
-                }
-                checked={theme === "dark"}
-              />{" "}
-              Dark mode
-            </label>
-          )}
-        </ThemeToggler>
-        <Navigation />
-        {children}
-      </Container>
-    );
-  }
-}
+const Template = ({ children }) => {
+  deckDeckGoHighlightElement();
+  const [theme, themeToggler] = useTheme();
+
+  useEffect(() => {
+    if (theme === "light") {
+      document.getElementById("themeBtn").setAttribute("aria-pressed", "false");
+    } else {
+      document.getElementById("themeBtn").setAttribute("aria-pressed", "true");
+    }
+  }, null);
+
+  return (
+    <Container>
+      <button
+        id="themeBtn"
+        className="btn_theme"
+        onClick={themeToggler}
+      ></button>
+      <Navigation />
+      {children}
+    </Container>
+  );
+};
 
 export default Template;

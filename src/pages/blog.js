@@ -39,35 +39,31 @@ function BlogIndex({ data }) {
   };
   return (
     <Layout>
-      <div style={{ background: "#fff" }}>
-        {/* <Helmet title={siteTitle} /> */}
-        {/* <CloudTag tags={tags} /> */}
-        <div className={styles.hero}>Blog</div>
-        <div className="wrapper fJjfrB">
-          <h2 className="section-headline">Recent articles</h2>
-          <ul className="article-list">
-            {posts
-              ? posts.map(({ node }) => {
-                  return (
-                    <li key={node.slug}>
-                      <ArticlePreview article={node} />
-                      {node.tags.map((tag, index) => {
-                        return (
-                          <a
-                            href="javascript:(void);"
-                            className="cqnnTr"
-                            onClick={handleInputChange}
-                          >
-                            {tag}
-                          </a>
-                        );
-                      })}
-                    </li>
-                  );
-                })
-              : null}
-          </ul>
-        </div>
+      <div className={styles.hero}>Blog</div>
+      <div className="wrapper fJjfrB">
+        <h2 className="section-headline">Recent articles</h2>
+        <ul className="article-list">
+          {posts
+            ? posts.map(({ node }) => {
+                return (
+                  <li key={node.slug}>
+                    <ArticlePreview article={node} />
+                    {node.tags.map((tag, index) => {
+                      return (
+                        <a
+                          href="javascript:(void);"
+                          className="cqnnTr"
+                          onClick={handleInputChange}
+                        >
+                          {tag}
+                        </a>
+                      );
+                    })}
+                  </li>
+                );
+              })
+            : null}
+        </ul>
       </div>
     </Layout>
   );

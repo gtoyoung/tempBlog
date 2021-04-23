@@ -12,20 +12,18 @@ class PhotoIndex extends React.Component {
     const photos = get(this, "props.data.allContentfulPhoto.edges");
     return (
       <Layout location={this.props.location}>
-        <div style={{ background: "#fff" }}>
-          <Helmet title={siteTitle} />
-          <div className={styles.hero}>Photo</div>
-          <div className="wrapper">
-            <ul className="article-list">
-              {photos.map(({ node }) => {
-                return (
-                  <li key={node.slug}>
-                    <Img alt="" fluid={node.photo.fluid} />
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
+        <Helmet title={siteTitle} />
+        <div className={styles.hero}>Photo</div>
+        <div className="wrapper">
+          <ul className="article-list">
+            {photos.map(({ node }) => {
+              return (
+                <li key={node.slug}>
+                  <Img alt="" fluid={node.photo.fluid} />
+                </li>
+              );
+            })}
+          </ul>
         </div>
       </Layout>
     );
