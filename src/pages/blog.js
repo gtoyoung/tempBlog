@@ -41,7 +41,7 @@ function BlogIndex({ data }) {
     <Layout>
       <div className={styles.hero}>Blog</div>
       <div className="wrapper fJjfrB">
-        <h2 className="section-headline">Recent articles</h2>
+        <h2 className="section-headline">articles</h2>
         <ul className="article-list">
           {posts
             ? posts.map(({ node }) => {
