@@ -1,16 +1,23 @@
 import { useState } from "react";
 
 const useTheme = () => {
-  // const prefersColorScheme = window.matchMedia("prefers-color-scheme: dark")
-  //   .matches
-  //   ? "dark"
-  //   : "light";
-  // const localTheme = localStorage.getItem("theme");
-  const initialTheme = "light";
+  let prefersColorScheme = null;
+  if (typeof window !== "undefined") {
+    prefersColorScheme = window.matchMedia("prefers-color-scheme: dark").matches
+      ? "dark"
+      : "light";
+  }
+  let localTheme = null;
+  if (typeof window !== "undefined") {
+    localTheme = localStorage.getItem("theme");
+  }
+  const initialTheme = localTheme || prefersColorScheme;
   const [theme, setTheme] = useState(initialTheme);
 
   const setMode = (mode) => {
-    // localStorage.setItem("theme", mode);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("theme", mode);
+    }
     if (mode === "dark" && typeof window !== "undefined") {
       document.body.classList.remove("light");
       document.body.classList.add("dark");
