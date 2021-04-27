@@ -14,7 +14,13 @@ class PhotoIndex extends React.Component {
       <Layout location={this.props.location}>
         <Helmet title={siteTitle} />
         <div className={styles.hero}>Photo</div>
-        <div className="wrapper">
+        <div
+          className="wrapper"
+          onContextMenu={(e) => {
+            e.preventDefault();
+            alert("우클릭 방지");
+          }}
+        >
           <ul className="article-list">
             {photos.map(({ node }) => {
               return (

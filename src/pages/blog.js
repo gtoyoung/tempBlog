@@ -5,29 +5,16 @@ import Layout from "../components/layout";
 import ArticlePreview from "../components/article-preview";
 import { useState } from "react";
 import { useEffect } from "react";
-import Button from "react-bootstrap/Button";
 
 function BlogIndex({ data }) {
   const [posts, setPosts] = useState(data.allContentfulBlogPost.edges);
-  const [tags, setTags] = useState([]);
   const [query, setQuery] = useState("");
   useEffect(() => {
     // settingTags();
-    if (query == "") {
+    if (query === "") {
       setPosts(data.allContentfulBlogPost.edges);
     }
   }, [posts]);
-
-  const settingTags = () => {
-    var tagList = [];
-    posts.map((post, index) => {
-      post.node.tags.map((tag, index) => {
-        tagList.push(tag);
-      });
-    });
-    setTags(tagList);
-    console.log(tags);
-  };
 
   const handleInputChange = (event) => {
     const filteredPosts = data.allContentfulBlogPost.edges.filter((post) => {

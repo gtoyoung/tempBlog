@@ -23,9 +23,8 @@ class BlogPostTemplate extends React.Component {
               <TableOfContents items={post.body.childMdx.tableOfContents} />
             </div>
           </StickyBox>
-          <div style={{ background: "#fff" }}>
-            <Helmet title={`${post.title} | ${siteTitle}`} />
-
+          <Helmet title={`${post.title} | ${siteTitle}`} />
+          <div>
             <div className={heroStyles.hero}>
               <Img
                 className={heroStyles.heroImage}
