@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet";
 import styles from "./blog.module.css";
 import Layout from "../components/layout";
 import Img from "gatsby-image";
+import HTMLFlipBook from "react-pageflip";
 
 class PhotoIndex extends React.Component {
   render() {
@@ -13,7 +14,6 @@ class PhotoIndex extends React.Component {
     return (
       <Layout location={this.props.location}>
         <Helmet title={siteTitle} />
-        <div className={styles.hero}>Photo</div>
         <div
           className="wrapper"
           onContextMenu={(e) => {
@@ -21,15 +21,15 @@ class PhotoIndex extends React.Component {
             alert("우클릭 방지");
           }}
         >
-          <ul className="article-list">
+          <HTMLFlipBook width={600} height={500}>
             {photos.map(({ node }) => {
               return (
-                <li key={node.slug}>
+                <div key={node.slug}>
                   <Img alt="" fluid={node.photo.fluid} />
-                </li>
+                </div>
               );
             })}
-          </ul>
+          </HTMLFlipBook>
         </div>
       </Layout>
     );
