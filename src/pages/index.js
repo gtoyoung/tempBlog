@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet";
 import Hero from "../components/hero";
 import Layout from "../components/layout";
 import ArticlePreview from "../components/article-preview";
+import "papercss/dist/paper.min.css";
 
 class RootIndex extends React.Component {
   render() {
@@ -18,15 +19,15 @@ class RootIndex extends React.Component {
         <Hero data={author.node} />
         <div className="wrapper">
           <h2 className="section-headline">Recent articles</h2>
-          <ul className="article-list">
+          <div className="row flex-spaces">
             {posts.map(({ node }) => {
               return (
-                <li key={node.slug}>
+                <div key={node.slug} className="sm-3 col border border-primary">
                   <ArticlePreview article={node} />
-                </li>
+                </div>
               );
             })}
-          </ul>
+          </div>
         </div>
       </Layout>
     );

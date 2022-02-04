@@ -15,16 +15,17 @@ const useTheme = () => {
   const [theme, setTheme] = useState(initialTheme);
 
   const setMode = (mode) => {
+    var root = document.getElementsByTagName("html")[0];
     if (typeof window !== "undefined") {
       localStorage.setItem("theme", mode);
     }
     if (mode === "dark" && typeof window !== "undefined") {
-      document.body.classList.remove("light");
-      document.body.classList.add("dark");
+      root.classList.add("dark");
+      document.body.style.backgroundColor = "#41403e";
       document.getElementById("themeBtn").setAttribute("aria-pressed", "true");
     } else if (mode === "light" && typeof window !== "undefined") {
-      document.body.classList.remove("dark");
-      document.body.classList.add("light");
+      root.classList.remove("dark");
+      document.body.style.backgroundColor = "#fff";
       document.getElementById("themeBtn").setAttribute("aria-pressed", "false");
     }
     setTheme(mode);

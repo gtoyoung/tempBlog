@@ -27,30 +27,33 @@ function BlogIndex({ data }) {
   return (
     <Layout>
       <div className={styles.hero}>Blog</div>
-      <div className="wrapper fJjfrB">
+      <div className="wrapper">
         <h2 className="section-headline">articles</h2>
-        <ul className="article-list">
+        <div className="row flex-spaces">
           {posts
             ? posts.map(({ node }) => {
                 return (
-                  <li key={node.slug}>
+                  <div
+                    key={node.slug}
+                    className="sm-3 col border border-primary"
+                  >
                     <ArticlePreview article={node} />
                     {node.tags.map((tag, index) => {
                       return (
-                        <a
+                        <button
                           href="javascript:(void);"
-                          className="cqnnTr"
+                          className="btn-small"
                           onClick={handleInputChange}
                         >
                           {tag}
-                        </a>
+                        </button>
                       );
                     })}
-                  </li>
+                  </div>
                 );
               })
             : null}
-        </ul>
+        </div>
       </div>
     </Layout>
   );
@@ -68,8 +71,8 @@ export const pageQuery = graphql`
           publishDate(formatString: "MMMM Do, YYYY")
           tags
           heroImage {
-            fluid(maxWidth: 350, maxHeight: 196, resizingBehavior: SCALE) {
-              ...GatsbyContentfulFluid_tracedSVG
+            fluid {
+              src
             }
           }
           description {
